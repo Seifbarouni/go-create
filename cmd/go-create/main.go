@@ -28,6 +28,4 @@ func main() {
 		fmt.Println("Invalid app type\nAvailable app types: web, console")
 		os.Exit(1)
 	}
-
-
 }
