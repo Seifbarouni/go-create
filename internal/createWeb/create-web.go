@@ -9,23 +9,7 @@ import (
 	h "github.com/Seifbarouni/go-create/internal/helpers"
 )
 
-// create folder and add README.md file
-func addFolderAndReadme(folderName string, content string) {
-	colorize.PrintWithColor(fmt.Sprintf("Creating %s folder...", folderName), colorize.Blue)
-	// create the folder
-	h.CreateFolder(folderName)
-	
-	// create the file
-	h.CreateFile(folderName, "README.md",content)
 
-	// go back to the root folder
-	err := os.Chdir("..")
-	if err != nil {
-		colorize.PrintWithColor("Error moving to folder", colorize.Red)
-		os.Exit(1)
-	}
-	colorize.PrintWithColor(fmt.Sprintf("Folder %s created", folderName), colorize.Green)
-}
 
 func createBackendWebApp(folderName string) {
 	h.CreateFile(folderName, "main.go", "package main\n\nimport (\n\t\"fmt\"\n)\n\nfunc main() {\n\tfmt.Println(\"Hello World!\")\n}")
@@ -34,12 +18,12 @@ func createBackendWebApp(folderName string) {
 	h.CreateFile(folderName,".dockerignore", "")
 	h.CreateFile(folderName,".gitignore", "")
 
-	addFolderAndReadme("models","# `/models`\n This is where you will create your models")
-	addFolderAndReadme("controllers","# `/controllers`\n This is where you will create your controllers")
-	addFolderAndReadme("services","# `/services`\n This is where you will create your services")
-	addFolderAndReadme("routes","# `/routes`\n This is where you will create your routes")
-	addFolderAndReadme("database","# `/database`\n This is where you will create your database")
-	addFolderAndReadme("config","# `/config`\n This is where you will create your config")
+	h.AddFolderAndReadme("models","# `/models`\n This is where you will create your models")
+	h.AddFolderAndReadme("controllers","# `/controllers`\n This is where you will create your controllers")
+	h.AddFolderAndReadme("services","# `/services`\n This is where you will create your services")
+	h.AddFolderAndReadme("routes","# `/routes`\n This is where you will create your routes")
+	h.AddFolderAndReadme("database","# `/database`\n This is where you will create your database")
+	h.AddFolderAndReadme("config","# `/config`\n This is where you will create your config")
 
 	
 }

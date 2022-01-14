@@ -28,25 +28,6 @@ func validateFolderName(folderName string) bool {
 
 
 
-
-// create folder and add README.md file
-func addFolderAndReadme(folderName string, content string) {
-	colorize.PrintWithColor(fmt.Sprintf("Creating %s folder...", folderName), colorize.Blue)
-	// create the folder
-	h.CreateFolder(folderName)
-	
-	// create the file
-	h.CreateFile(folderName, "README.md",content)
-
-	// go back to the root folder
-	err := os.Chdir("..")
-	if err != nil {
-		colorize.PrintWithColor("Error moving to folder", colorize.Red)
-		os.Exit(1)
-	}
-	colorize.PrintWithColor(fmt.Sprintf("Folder %s created", folderName), colorize.Green)
-}
-
 func CreateConsoleApp(folderName string) {
 	// start timer
 	start := time.Now()
@@ -60,10 +41,10 @@ func CreateConsoleApp(folderName string) {
 		h.CreateFolder(folderName)
 	}
 
-	addFolderAndReadme("bin","# `/bin`\n This folder contains the binary files of the app")
-	addFolderAndReadme("cmd","# `/cmd`\n This folder contains the main.go file of the app")
-	addFolderAndReadme("internal","# `/internal`\n Private application and library code. This is the code you don't want others importing in their applications or libraries.")
-	addFolderAndReadme("pkg","# `/pkg`\n Library code that's ok to use by external applications.")
+	h.AddFolderAndReadme("bin","# `/bin`\n This folder contains the binary files of the app")
+	h.AddFolderAndReadme("cmd","# `/cmd`\n This folder contains the main.go file of the app")
+	h.AddFolderAndReadme("internal","# `/internal`\n Private application and library code. This is the code you don't want others importing in their applications or libraries.")
+	h.AddFolderAndReadme("pkg","# `/pkg`\n Library code that's ok to use by external applications.")
 
 	// end timer
 	elapsed := time.Since(start)

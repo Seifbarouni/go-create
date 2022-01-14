@@ -62,3 +62,21 @@ func ExecuteCommand(command ...string){
 	}
     
 }
+
+// create folder and add README.md file
+func AddFolderAndReadme(folderName string, content string) {
+	colorize.PrintWithColor(fmt.Sprintf("Creating %s folder...", folderName), colorize.Blue)
+	// create the folder
+	CreateFolder(folderName)
+	
+	// create the file
+	CreateFile(folderName, "README.md",content)
+
+	// go back to the root folder
+	err := os.Chdir("..")
+	if err != nil {
+		colorize.PrintWithColor("Error moving to folder", colorize.Red)
+		os.Exit(1)
+	}
+	colorize.PrintWithColor(fmt.Sprintf("Folder %s created", folderName), colorize.Green)
+}
