@@ -3,6 +3,7 @@ package helpers
 import (
 	"fmt"
 	"os"
+	"os/exec"
 
 	colorize "github.com/Seifbarouni/go-create/internal/colorizeText"
 )
@@ -27,20 +28,37 @@ func CreateFolder(folderName string) {
 	}
 }
 
-// create README.md file and write the content
-func CreateReadme(folderName string, content string) {
+func CreateFile(folderName string, fileName string,content string) {
 	// create the file
-	file, err := os.Create("README.md")
+	file, err := os.Create(fileName)
 	if err != nil {
-		colorize.PrintWithColor("Error creating README.md file", colorize.Red)
+		colorize.PrintWithColor(fmt.Sprintf("Error creating %s file",fileName), colorize.Red)
 		os.Exit(1)
 	}
 	defer file.Close()
 
 	// write the content
-	_, err = file.WriteString(content)
+	if content != "" {
+		_, err = file.WriteString(content)
+		if err != nil {
+			colorize.PrintWithColor(fmt.Sprintf("Error writing to file %s",fileName), colorize.Red)
+			os.Exit(1)
+		}
+	}
+}
+
+func ExecuteCommand(command ...string){
+	cmd := exec.Command(command[0], command[1:]...)
+
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	cmd.Stdin = os.Stdin
+
+	err := cmd.Run()
 	if err != nil {
-		colorize.PrintWithColor("Error writing to README.md file", colorize.Red)
+		colorize.PrintWithColor(fmt.Sprintf("Error executing command %s",command), colorize.Red)
+		fmt.Println(err)
 		os.Exit(1)
 	}
+    
 }

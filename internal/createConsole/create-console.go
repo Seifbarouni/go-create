@@ -3,14 +3,12 @@ package createConsole
 import (
 	"fmt"
 	"os"
-	"sync"
 	"time"
 
 	colorize "github.com/Seifbarouni/go-create/internal/colorizeText"
 	h "github.com/Seifbarouni/go-create/internal/helpers"
 )
 
-var wg sync.WaitGroup
 
 func validateFolderName(folderName string) bool {
 	// check if the folder name is valid and does not contain spaces and special characters
@@ -33,13 +31,12 @@ func validateFolderName(folderName string) bool {
 
 // create folder and add README.md file
 func addFolderAndReadme(folderName string, content string) {
-	defer wg.Done()
 	colorize.PrintWithColor(fmt.Sprintf("Creating %s folder...", folderName), colorize.Blue)
 	// create the folder
 	h.CreateFolder(folderName)
 	
 	// create the file
-	h.CreateReadme(folderName, content)
+	h.CreateFile(folderName, "README.md",content)
 
 	// go back to the root folder
 	err := os.Chdir("..")
@@ -53,7 +50,6 @@ func addFolderAndReadme(folderName string, content string) {
 func CreateConsoleApp(folderName string) {
 	// start timer
 	start := time.Now()
-	wg.Add(4)
 	// check if the folder name is valid and does not contain spaces and special characters
 	if !validateFolderName(folderName) {
 		colorize.PrintWithColor("Invalid folder name", colorize.Red)
@@ -69,8 +65,7 @@ func CreateConsoleApp(folderName string) {
 	addFolderAndReadme("internal","# `/internal`\n Private application and library code. This is the code you don't want others importing in their applications or libraries.")
 	addFolderAndReadme("pkg","# `/pkg`\n Library code that's ok to use by external applications.")
 
-	wg.Wait()
 	// end timer
 	elapsed := time.Since(start)
-	colorize.PrintWithColor(fmt.Sprintf("\nApp created in %vs\n", elapsed.Seconds()), colorize.White)
+	colorize.PrintWithColor(fmt.Sprintf("\nApp created in %s\n", elapsed), colorize.White)
 }
