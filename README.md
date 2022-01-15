@@ -13,7 +13,7 @@ go build -o ../../bin/
 
 ## Usage
 
-You need to add the executable to your path to use go-create everywhere. For more info, check these links : <br>
+You need to add the executable to your path to use go-create everywhere. For more info, check out these links : <br>
 [for windows users](https://medium.com/@kevinmarkvi/how-to-add-executables-to-your-path-in-windows-5ffa4ce61a53)<br>
 [for linux users](https://medium.com/codex/adding-executable-program-commands-to-the-path-variable-5e45f1bdf6ce)
 
