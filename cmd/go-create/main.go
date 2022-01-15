@@ -23,7 +23,7 @@ func main() {
 	case "web":
 		web.CreateWebApp(folderName)
 	case "console":
-	 	console.CreateConsoleApp(folderName)	
+		console.CreateConsoleApp(folderName)
 	default:
 		fmt.Println("Invalid app type\nAvailable app types: web, console")
 		os.Exit(1)

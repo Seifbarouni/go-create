@@ -9,24 +9,20 @@ import (
 	h "github.com/Seifbarouni/go-create/internal/helpers"
 )
 
-
 func validateFolderName(folderName string) bool {
 	// check if the folder name is valid and does not contain spaces and special characters
 	if len(folderName) < 1 || len(folderName) > 50 {
 		return false
 	}
-	
+
 	for _, char := range folderName {
 		if char == ' ' || char == '\\' || char == '/' || char == ':' || char == '*' || char == '?' || char == '"' || char == '<' || char == '>' || char == '|' {
 			return false
 		}
 	}
-	
+
 	return true
 }
-
-
-
 
 func CreateConsoleApp(folderName string) {
 	// start timer
@@ -41,12 +37,14 @@ func CreateConsoleApp(folderName string) {
 		h.CreateFolder(folderName)
 	}
 
-	h.AddFolderAndReadme("bin","# `/bin`\n This folder contains the binary files of the app")
-	h.AddFolderAndReadme("cmd","# `/cmd`\n This folder contains the main.go file of the app")
-	h.AddFolderAndReadme("internal","# `/internal`\n Private application and library code. This is the code you don't want others importing in their applications or libraries.")
-	h.AddFolderAndReadme("pkg","# `/pkg`\n Library code that's ok to use by external applications.")
+	h.AddFolderAndReadme("bin", "# `/bin`\n This folder contains the binary files of the app")
+	h.AddFolderAndReadme("cmd", "# `/cmd`\n This folder contains the main.go file of the app")
+	h.AddFolderAndReadme("internal", "# `/internal`\n Private application and library code. This is the code you don't want others importing in their applications or libraries.")
+	h.AddFolderAndReadme("pkg", "# `/pkg`\n Library code that's ok to use by external applications.")
+
+	h.ExecuteCommand("git", "init")
 
 	// end timer
 	elapsed := time.Since(start)
-	colorize.PrintWithColor(fmt.Sprintf("\nApp created in %s\n", elapsed), colorize.White)
+	colorize.PrintWithColor(fmt.Sprintf("\nApp created in %s\n", elapsed), colorize.Green)
 }

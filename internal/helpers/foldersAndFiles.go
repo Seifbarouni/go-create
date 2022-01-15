@@ -28,11 +28,11 @@ func CreateFolder(folderName string) {
 	}
 }
 
-func CreateFile(folderName string, fileName string,content string) {
+func CreateFile(fileName string, content string) {
 	// create the file
 	file, err := os.Create(fileName)
 	if err != nil {
-		colorize.PrintWithColor(fmt.Sprintf("Error creating %s file",fileName), colorize.Red)
+		colorize.PrintWithColor(fmt.Sprintf("Error creating %s file", fileName), colorize.Red)
 		os.Exit(1)
 	}
 	defer file.Close()
@@ -41,13 +41,13 @@ func CreateFile(folderName string, fileName string,content string) {
 	if content != "" {
 		_, err = file.WriteString(content)
 		if err != nil {
-			colorize.PrintWithColor(fmt.Sprintf("Error writing to file %s",fileName), colorize.Red)
+			colorize.PrintWithColor(fmt.Sprintf("Error writing to file %s", fileName), colorize.Red)
 			os.Exit(1)
 		}
 	}
 }
 
-func ExecuteCommand(command ...string){
+func ExecuteCommand(command ...string) {
 	cmd := exec.Command(command[0], command[1:]...)
 
 	cmd.Stdout = os.Stdout
@@ -56,21 +56,20 @@ func ExecuteCommand(command ...string){
 
 	err := cmd.Run()
 	if err != nil {
-		colorize.PrintWithColor(fmt.Sprintf("Error executing command %s",command), colorize.Red)
-		fmt.Println(err)
+		colorize.PrintWithColor(fmt.Sprintf("Error executing command %s", command), colorize.Red)
 		os.Exit(1)
 	}
-    
+
 }
 
 // create folder and add README.md file
 func AddFolderAndReadme(folderName string, content string) {
-	colorize.PrintWithColor(fmt.Sprintf("Creating %s folder...", folderName), colorize.Blue)
+	colorize.PrintWithColor(fmt.Sprintf("Creating %s folder...\n", folderName), colorize.Purple)
 	// create the folder
 	CreateFolder(folderName)
-	
+
 	// create the file
-	CreateFile(folderName, "README.md",content)
+	CreateFile("README.md", content)
 
 	// go back to the root folder
 	err := os.Chdir("..")
@@ -78,5 +77,5 @@ func AddFolderAndReadme(folderName string, content string) {
 		colorize.PrintWithColor("Error moving to folder", colorize.Red)
 		os.Exit(1)
 	}
-	colorize.PrintWithColor(fmt.Sprintf("Folder %s created", folderName), colorize.Green)
+	colorize.PrintWithColor(fmt.Sprintf("Folder %s created\n", folderName), colorize.White)
 }

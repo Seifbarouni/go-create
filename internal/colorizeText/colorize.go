@@ -1,5 +1,7 @@
 package colorizeText
 
+import "fmt"
+
 var (
 	Reset  = "\033[0m"
 	Bold   = "\033[1m"
@@ -14,8 +16,5 @@ var (
 )
 
 func PrintWithColor(text string, color string) {
-	println(color + text + Reset)
+	fmt.Print(color + text + Reset)
 }
-
-
-	
