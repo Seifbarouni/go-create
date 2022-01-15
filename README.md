@@ -1,6 +1,6 @@
 # go-create
 
-go-create is a tool that helps me create my apps (console app, back-end apps, full-stack apps).
+go-create is a tool that helps me create my apps (console apps, back-end web apps, full-stack web apps).
 
 ## Build
 
