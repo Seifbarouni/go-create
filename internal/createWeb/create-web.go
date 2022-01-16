@@ -27,7 +27,7 @@ func createBackendWebApp(folderName string) {
 
 func createFrontendApp() {
 	// get type of frontend app from user : react, nextjs, vue
-	colorize.PrintWithColor("What type of frontend app do you want to create?\n1. react\n2. nextjs\n3. vue\n", colorize.Gray)
+	colorize.PrintWithColor("What type of frontend app do you want to create?\n1. react\n2. nextjs\n3. vue\n4. svelte\n", colorize.Gray)
 	var frontendType string
 	fmt.Print("-->")
 	fmt.Scanln(&frontendType)
@@ -38,7 +38,9 @@ func createFrontendApp() {
 		h.ExecuteCommand("npx", "create-next-app@latest", "--typescript", "frontend")
 	} else if frontendType == "3" || frontendType == "vue" {
 		h.ExecuteCommand("npx", "@vue/cli", "create", "--default", "frontend")
-	} else {
+	}else if frontendType == "4" || frontendType == "svelte" {
+		h.ExecuteCommand("npx","degit","sveltejs/template","frontend")
+	}else {
 		colorize.PrintWithColor("Invalid input", colorize.Red)
 		os.Exit(1)
 	}
