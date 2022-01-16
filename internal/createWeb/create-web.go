@@ -38,9 +38,9 @@ func createFrontendApp() {
 		h.ExecuteCommand("npx", "create-next-app@latest", "--typescript", "frontend")
 	} else if frontendType == "3" || frontendType == "vue" {
 		h.ExecuteCommand("npx", "@vue/cli", "create", "--default", "frontend")
-	}else if frontendType == "4" || frontendType == "svelte" {
-		h.ExecuteCommand("npx","degit","sveltejs/template","frontend")
-	}else {
+	} else if frontendType == "4" || frontendType == "svelte" {
+		h.ExecuteCommand("npx", "degit", "sveltejs/template", "frontend")
+	} else {
 		colorize.PrintWithColor("Invalid input", colorize.Red)
 		os.Exit(1)
 	}

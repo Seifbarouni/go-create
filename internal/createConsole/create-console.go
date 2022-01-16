@@ -47,6 +47,7 @@ func CreateConsoleApp(folderName string) {
 		colorize.PrintWithColor("Error moving to folder", colorize.Red)
 		os.Exit(1)
 	}
+
 	// create the main.go file
 	h.CreateFile("main.go", "package main\n\nimport \"fmt\"\n\nfunc main() {\n\tfmt.Println(\"Hello World!\")\n}")
 
