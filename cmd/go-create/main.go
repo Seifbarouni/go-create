@@ -30,7 +30,7 @@ func main() {
 	case "db":
 		db.CreateDB(folderOrFileName)
 	case "model":
-		md.CreateModel(folderOrFileName)	
+		md.CreateModel(folderOrFileName)
 	case "crud-service":
 		sv.CreateService(folderOrFileName)
 	default:
