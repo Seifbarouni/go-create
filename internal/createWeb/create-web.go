@@ -9,7 +9,23 @@ import (
 	h "github.com/Seifbarouni/go-create/internal/helpers"
 )
 
+func initializeModuleWithFiber() {
+	moduleName := ""
+	// get module name from user
+	colorize.PrintWithColor("module name :", colorize.Gray)
+	fmt.Scanln(&moduleName)
+	// if the module name is empty recall the function
+	if moduleName == "" {
+		initializeModuleWithFiber()
+	}
+	// go mod init with the module name
+	h.ExecuteCommand("go", "mod", "init", moduleName)
+	// go get -u github.com/gofiber/fiber/v2
+	h.ExecuteCommand("go", "get", "-u", "github.com/gofiber/fiber/v2")
+}
+
 func createBackendWebApp(folderName string) {
+	initializeModuleWithFiber()
 	h.CreateFile("main.go", "package main\n\nimport (\n\t\"fmt\"\n)\n\nfunc main() {\n\tfmt.Println(\"Hello World!\")\n}")
 	h.CreateFile(".env", "")
 	h.CreateFile("Dockefile", "")
