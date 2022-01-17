@@ -7,13 +7,14 @@ import (
 	console "github.com/Seifbarouni/go-create/internal/createConsole"
 	db "github.com/Seifbarouni/go-create/internal/createDB"
 	md "github.com/Seifbarouni/go-create/internal/createModel"
+	sv "github.com/Seifbarouni/go-create/internal/createService"
 	web "github.com/Seifbarouni/go-create/internal/createWeb"
 )
 
 func main() {
 	//check if the user has provided 3 arguments
 	if len(os.Args) != 3 {
-		fmt.Println("Usage: go-create <app-type> <folder-name>\nExample: go-create web .\nAvailable app types: web, console\nOther functionnalities: db <file-name>, service <file-name>, model <file-name>")
+		fmt.Println("Usage: go-create <app-type> <folder-name>\nExample: go-create web .\nAvailable app types: web, console\nOther functionnalities: db <file-name>, crud-service <concerned-model>, model <file-name>")
 		os.Exit(1)
 	}
 	// get the app type and path
@@ -29,9 +30,11 @@ func main() {
 	case "db":
 		db.CreateDB(folderOrFileName)
 	case "model":
-		md.CreateModel(folderOrFileName)		
+		md.CreateModel(folderOrFileName)	
+	case "crud-service":
+		sv.CreateService(folderOrFileName)
 	default:
-		fmt.Println("Invalid app type\nAvailable types: web, console, db, service, model")
+		fmt.Println("Invalid app type\nAvailable types: web, console, db, crud-service, model")
 		os.Exit(1)
 	}
 }
