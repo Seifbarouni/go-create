@@ -5,27 +5,30 @@ import (
 	"os"
 
 	console "github.com/Seifbarouni/go-create/internal/createConsole"
+	db "github.com/Seifbarouni/go-create/internal/createDB"
 	web "github.com/Seifbarouni/go-create/internal/createWeb"
 )
 
 func main() {
 	//check if the user has provided 3 arguments
 	if len(os.Args) != 3 {
-		fmt.Println("Usage: go-create <app-type> <folder-name>\nExample: go-create web .\nAvailable app types: web, console")
+		fmt.Println("Usage: go-create <app-type> <folder-name>\nExample: go-create web .\nAvailable app types: web, console\nOther functionnalities: db <file-name>, service <file-name>, model <file-name>")
 		os.Exit(1)
 	}
 	// get the app type and path
 	appType := os.Args[1]
-	folderName := os.Args[2]
+	folderOrFileName := os.Args[2]
 
 	// check if the app type is valid with a switch statement
 	switch appType {
 	case "web":
-		web.CreateWebApp(folderName)
+		web.CreateWebApp(folderOrFileName)
 	case "console":
-		console.CreateConsoleApp(folderName)
+		console.CreateConsoleApp(folderOrFileName)
+	case "db":
+		db.CreateDB(folderOrFileName)	
 	default:
-		fmt.Println("Invalid app type\nAvailable app types: web, console")
+		fmt.Println("Invalid app type\nAvailable types: web, console, db, service, model")
 		os.Exit(1)
 	}
 }

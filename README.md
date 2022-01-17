@@ -19,6 +19,7 @@ You need to add the executable to your path to use go-create everywhere. For mor
 
 ```bash
 go-create <app-type> <folder-name>
+go-create <db, service or model> <file-name>
 ```
 
 ## Examples
@@ -30,6 +31,8 @@ go-create console .
 go-create console test
 # creates a web app (you can later choose only back-end or full-stack with react or next or vue)
 go-create web test
+# creates a database file with postgres config in the current directory
+go-create db database
 ```
 
 ## Contributing
