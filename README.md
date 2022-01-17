@@ -20,7 +20,7 @@ You need to add the executable to your path to use go-create everywhere. For mor
 ```bash
 go-create <app-type> <folder-name>
 go-create <db or model> <file-name>
-go-create service <model needed>
+go-create service <concerned-model>
 ```
 
 ## Examples
@@ -34,6 +34,8 @@ go-create console test
 go-create web test
 # creates a database file with postgres config in the current directory
 go-create db database
+# creates a crud service (articlesService.go) using the model Article
+go-create crud-service Article
 ```
 
 ## Contributing
