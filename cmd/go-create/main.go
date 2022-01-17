@@ -6,6 +6,7 @@ import (
 
 	console "github.com/Seifbarouni/go-create/internal/createConsole"
 	db "github.com/Seifbarouni/go-create/internal/createDB"
+	md "github.com/Seifbarouni/go-create/internal/createModel"
 	web "github.com/Seifbarouni/go-create/internal/createWeb"
 )
 
@@ -26,7 +27,9 @@ func main() {
 	case "console":
 		console.CreateConsoleApp(folderOrFileName)
 	case "db":
-		db.CreateDB(folderOrFileName)	
+		db.CreateDB(folderOrFileName)
+	case "model":
+		md.CreateModel(folderOrFileName)		
 	default:
 		fmt.Println("Invalid app type\nAvailable types: web, console, db, service, model")
 		os.Exit(1)
