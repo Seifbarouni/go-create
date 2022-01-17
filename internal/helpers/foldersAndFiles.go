@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"runtime"
 
 	colorize "github.com/Seifbarouni/go-create/internal/colorizeText"
 )
@@ -78,4 +79,12 @@ func AddFolderAndReadme(folderName string, content string) {
 		os.Exit(1)
 	}
 	colorize.PrintWithColor(fmt.Sprintf("Folder %s created\n", folderName), colorize.White)
+}
+
+func GetSeperator() string {
+	os := runtime.GOOS
+	if os == "windows" {
+		return "\\"
+	}
+	return "/"
 }
