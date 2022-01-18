@@ -41,6 +41,8 @@ func createBackendWebApp(folderName string) {
 	h.AddFolderAndReadme("database", "# `/database`\n This is where you will create your database")
 	h.AddFolderAndReadme("config", "# `/config`\n This is where you will create your config")
 
+	h.AddPublicAndPrivateRoutes()
+
 }
 
 func createFrontendApp() {
