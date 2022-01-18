@@ -1,10 +1,12 @@
 package helpers
 
 import (
+	"bufio"
 	"fmt"
 	"os"
 	"os/exec"
 	"runtime"
+	"strings"
 
 	colorize "github.com/Seifbarouni/go-create/internal/colorizeText"
 )
@@ -106,4 +108,27 @@ func AddPublicAndPrivateRoutes(){
 		colorize.PrintWithColor("Error moving to folder", colorize.Red)
 		os.Exit(1)
 	}
+}
+
+func GetModuleName()string{
+	// go to the root folder
+	err := os.Chdir("..")
+	if err != nil {
+		colorize.PrintWithColor("Error moving to folder", colorize.Red)
+		os.Exit(1)
+	}
+	// read the first line of the go.mod file
+	file, err := os.Open("go.mod")
+	if err != nil {
+		colorize.PrintWithColor("Error opening go.mod file", colorize.Red)
+		os.Exit(1)
+	}
+	defer file.Close()
+	scanner := bufio.NewScanner(file)
+	scanner.Scan()
+
+	firstLine:= scanner.Text()
+	
+
+	return strings.Split(firstLine," ")[1]
 }
