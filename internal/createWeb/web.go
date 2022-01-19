@@ -87,6 +87,10 @@ func CreateWebApp(folderName string) {
 	fmt.Scanln(&appType)
 	if appType == "1" || appType == "fullstack" {
 		start := time.Now()
+		if !h.ValidateFolderName(folderName) {
+			colorize.PrintWithColor("Invalid folder name", colorize.Red)
+			os.Exit(1)
+		}
 		if folderName != "." {
 			h.CreateFolder(folderName)
 		}
@@ -98,6 +102,10 @@ func CreateWebApp(folderName string) {
 	} else if appType == "2" || appType == "backend" {
 		// start timer
 		start := time.Now()
+		if !h.ValidateFolderName(folderName) {
+			colorize.PrintWithColor("Invalid folder name", colorize.Red)
+			os.Exit(1)
+		}
 		if folderName != "." {
 			h.CreateFolder(folderName)
 		}

@@ -91,6 +91,21 @@ func GetSeperator() string {
 	return "/"
 }
 
+func ValidateFolderName(folderName string) bool {
+	// check if the folder name is valid and does not contain spaces and special characters
+	if len(folderName) < 1 || len(folderName) > 50 {
+		return false
+	}
+
+	for _, char := range folderName {
+		if char == ' ' || char == '\\' || char == '/' || char == ':' || char == '*' || char == '?' || char == '"' || char == '<' || char == '>' || char == '|' {
+			return false
+		}
+	}
+
+	return true
+}
+
 func AddPublicAndPrivateRoutes() {
 	// go to the routes folder
 	err := os.Chdir("routes")
