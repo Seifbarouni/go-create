@@ -14,7 +14,7 @@ import (
 func main() {
 	//check if the user has provided 3 arguments
 	if len(os.Args) != 3 {
-		fmt.Println("Usage: go-create <app-type> <folder-name>\nExample: go-create web .\nAvailable app types: web, cli\nOther functionnalities: db <file-name>, service <concerned-model>, model <file-name>")
+		fmt.Println("Usage: go-create <app-type> <folder-name>\nExample: go-create web .\nAvailable app types: web, cli\nOther functionalities: db <file-name>, service <concerned-model>, model <file-name>")
 		os.Exit(1)
 	}
 	// get the app type and path
