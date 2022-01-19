@@ -1,7 +1,9 @@
 package createService
 
 import (
+	"fmt"
 	"os"
+	"regexp"
 	"strings"
 
 	colorize "github.com/Seifbarouni/go-create/internal/colorizeText"
@@ -9,19 +11,17 @@ import (
 )
 
 func CreateService(model string) {
-	// delete every special character from the file name
-	model = strings.ReplaceAll(model, "-", "")
 	model = strings.ReplaceAll(model, ".", "")
-	model = strings.ReplaceAll(model, "(", "")
-	model = strings.ReplaceAll(model, ")", "")
-	model = strings.ReplaceAll(model, ",", "")
-	model = strings.ReplaceAll(model, ":", "")
-	model = strings.ReplaceAll(model, ";", "")
-	model = strings.ReplaceAll(model, "!", "")
-	model = strings.ReplaceAll(model, "?", "")
-	model = strings.ReplaceAll(model, "&", "")
-	model = strings.ReplaceAll(model, "*", "")
-	model = strings.ReplaceAll(model, "^", "")
+	
+	// validate the model name with regex
+	re := regexp.MustCompile(`[^-(),:;!?&*^\s]`)
+	
+	if !re.MatchString(model) {
+		colorize.PrintWithColor(fmt.Sprintf("Invalid model name %s", model), colorize.Red)
+		os.Exit(1)
+	}
+	
+
 	model = strings.Title(model)
 	// add Service.go to the file name
 	fileName := ""
