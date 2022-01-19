@@ -27,15 +27,15 @@ go-create service <concerned-model>
 
 ```bash
 # creates the project in the current directory
-go-create console .
+go-create cli .
 # creates the project in the directory test
-go-create console test
+go-create cli test
 # creates a web app (you can later choose only back-end or full-stack with react or next or vue)
 go-create web test
 # creates a database file with postgres config in the current directory
 go-create db database
 # creates a crud service (articlesService.go) using the model Article
-go-create crud-service Article
+go-create service Article
 ```
 
 ## Contributing
