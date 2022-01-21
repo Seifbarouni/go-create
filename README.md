@@ -19,8 +19,9 @@ You need to add the executable to your path to use go-create everywhere. For mor
 
 ```bash
 go-create <app-type> <folder-name>
-go-create <db or model> <file-name>
-go-create service <concerned-model>
+go-create db <file-name>
+go-create model <file-name>
+go-create service <model-name>
 ```
 
 ## Examples
