@@ -7,8 +7,10 @@ import (
 	"strings"
 
 	colorize "github.com/Seifbarouni/go-create/internal/colorizeText"
-	h "github.com/Seifbarouni/go-create/internal/helpers"
+	"github.com/Seifbarouni/go-create/internal/helpers"
 )
+
+var h *helpers.Helpers = helpers.InitializeHelpers()
 
 func generateModelName(fileName string) string {
 	// split the file name by " "

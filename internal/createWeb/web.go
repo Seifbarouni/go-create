@@ -6,8 +6,10 @@ import (
 	"time"
 
 	colorize "github.com/Seifbarouni/go-create/internal/colorizeText"
-	h "github.com/Seifbarouni/go-create/internal/helpers"
+	"github.com/Seifbarouni/go-create/internal/helpers"
 )
+
+var h *helpers.Helpers = helpers.InitializeHelpers()
 
 func initializeModuleWithFiber(moduleName string) {
 	// go mod init with the module name
