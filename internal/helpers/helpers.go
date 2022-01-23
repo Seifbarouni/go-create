@@ -13,16 +13,6 @@ import (
 
 type Helpers struct{}
 
-type HelpersInterface interface {
-	CreateFolder(folderName string)
-	CreateFile(fileName string, content string)
-	ExecuteCommand(command ...string)
-	AddFolderAndReadme(folderName string, content string)
-	AddPublicAndPrivateRoutes()
-	GetSeperator() string
-	ValidateFolderName(folderName string) bool
-	GetModuleName() string
-}
 
 func InitializeHelpers() *Helpers {
 	return &Helpers{}
