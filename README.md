@@ -4,16 +4,16 @@ go-create is a tool that helps me create my apps (console apps, back-end web app
 
 ## Build
 
-You need to have Golang v1.17.5+ to be able to build this project.
+You need to have Golang v1.17.5+ to be able to build this project.<br>
+Just execute the build.sh file.
 
 ```bash
-cd cmd/go-create
-go build -o ../../bin/
+./build.sh
 ```
 
 ## Usage
 
-You need to add the executable to your path to use go-create everywhere. For more info, check out these links : <br>
+The executable will be located in the bin folder. You need to add it to your path to use it everywhere. For more info, please check out these links : <br>
 [for windows users](https://medium.com/@kevinmarkvi/how-to-add-executables-to-your-path-in-windows-5ffa4ce61a53)<br>
 [for linux users](https://medium.com/codex/adding-executable-program-commands-to-the-path-variable-5e45f1bdf6ce)
 
