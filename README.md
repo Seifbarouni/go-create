@@ -18,7 +18,7 @@ The executable will be located in the bin folder. You need to add it to your pat
 [for linux users](https://medium.com/codex/adding-executable-program-commands-to-the-path-variable-5e45f1bdf6ce)
 
 ```bash
-go-create <app-type> <folder-name>
+go-create web -t=<backend or fullstack> <folder-name>
 go-create db <file-name>
 go-create model <file-name>
 go-create service <model-name>
@@ -31,8 +31,8 @@ go-create service <model-name>
 go-create cli .
 # creates the project in the directory test
 go-create cli test
-# creates a web app (you can later choose only back-end or full-stack with react or next or vue)
-go-create web test
+# creates a web app
+go-create web -t=backend test
 # creates a database file with postgres config in the current directory
 go-create db database
 # creates a crud service (articlesService.go) using the model Article
