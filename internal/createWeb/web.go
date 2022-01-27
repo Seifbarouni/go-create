@@ -81,12 +81,7 @@ func createFullstackWebApp() {
 	createFrontendApp()
 }
 
-func CreateWebApp(folderName string,appType string) {
-/* 	// get type of web app from user : fullstack, backend
-	colorize.PrintWithColor("What type of web app do you want to create?\n1. fullstack\n2. backend\n", colorize.Gray)
-	var appType string
-	fmt.Print("-->")
-	fmt.Scanln(&appType) */
+func CreateWebApp(folderName string, appType string) {
 	if appType == "1" || appType == "fullstack" {
 		start := time.Now()
 		if !h.ValidateFolderName(folderName) {
