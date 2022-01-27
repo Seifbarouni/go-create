@@ -7,7 +7,7 @@ import (
 )
 
 func init() {
-	rootCmd.PersistentFlags().StringVarP(&appType, "type", "t", "backend", "can be backend or fullstack")
+	webCmd.Flags().StringVarP(&appType, "type", "t", "backend", "can be backend or fullstack")
 	rootCmd.MarkFlagRequired("type")
 	rootCmd.AddCommand(webCmd)
 }
