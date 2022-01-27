@@ -21,7 +21,7 @@ func initializeModuleWithFiber(moduleName string) {
 func createBackendWebApp(folderName string) {
 	moduleName := ""
 	// get module name from user
-	colorize.PrintWithColor("module name :", colorize.Gray)
+	colorize.PrintWithColor("module name : ", colorize.Gray)
 	fmt.Scanln(&moduleName)
 	// if the module name is empty recall the function
 	if moduleName == "" {
@@ -81,12 +81,12 @@ func createFullstackWebApp() {
 	createFrontendApp()
 }
 
-func CreateWebApp(folderName string) {
-	// get type of web app from user : fullstack, backend
+func CreateWebApp(folderName string,appType string) {
+/* 	// get type of web app from user : fullstack, backend
 	colorize.PrintWithColor("What type of web app do you want to create?\n1. fullstack\n2. backend\n", colorize.Gray)
 	var appType string
 	fmt.Print("-->")
-	fmt.Scanln(&appType)
+	fmt.Scanln(&appType) */
 	if appType == "1" || appType == "fullstack" {
 		start := time.Now()
 		if !h.ValidateFolderName(folderName) {
