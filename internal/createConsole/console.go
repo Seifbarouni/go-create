@@ -6,6 +6,7 @@ import (
 	"time"
 
 	colorize "github.com/Seifbarouni/go-create/internal/colorizeText"
+	gen "github.com/Seifbarouni/go-create/internal/generators"
 	"github.com/Seifbarouni/go-create/internal/helpers"
 )
 
@@ -35,10 +36,10 @@ func CreateConsoleApp(folderName string) {
 	}
 	h.ExecuteCommand("go", "mod", "init", moduleName)
 
-	h.AddFolderAndReadme("bin", "# `/bin`\n This folder contains the binary files of the app")
-	h.AddFolderAndReadme("cmd", "# `/cmd`\n This folder contains the main.go file of the app")
-	h.AddFolderAndReadme("internal", "# `/internal`\n Private application and library code. This is the code you don't want others importing in their applications or libraries.")
-	h.AddFolderAndReadme("pkg", "# `/pkg`\n Library code that's ok to use by external applications.")
+	h.AddFolderAndReadme("bin", gen.BinREADME)
+	h.AddFolderAndReadme("cmd", gen.CmdREADME)
+	h.AddFolderAndReadme("internal", gen.InternalREADME)
+	h.AddFolderAndReadme("pkg", gen.PkgREADME)
 	// go to cmd folder with the os package
 	err := os.Chdir("cmd")
 	if err != nil {
@@ -47,7 +48,7 @@ func CreateConsoleApp(folderName string) {
 	}
 
 	// create the main.go file
-	h.CreateFile("main.go", "package main\n\nimport \"fmt\"\n\nfunc main() {\n\tfmt.Println(\"Hello World!\")\n}")
+	h.CreateFile("main.go", gen.ConsoleMain)
 
 	// go back to the root folder
 	err = os.Chdir("..")
