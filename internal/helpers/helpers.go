@@ -13,7 +13,6 @@ import (
 
 type Helpers struct{}
 
-
 func InitializeHelpers() *Helpers {
 	return &Helpers{}
 }
@@ -153,33 +152,4 @@ func (*Helpers) GetModuleName() string {
 
 	return strings.Split(firstLine, " ")[1]
 
-	// V2
-	/*
-		i := 0
-		for i < 4 {
-			fmt.Println(i)
-			err := os.Chdir("..")
-			if err != nil {
-				colorize.PrintWithColor("Error moving to folder", colorize.Red)
-				os.Exit(1)
-			}
-			// read the first line of the go.mod file
-			file, err := os.Open("go.mod")
-			if err != nil {
-				fmt.Println(err.Error())
-				i++
-				continue
-			}
-			defer file.Close()
-			scanner := bufio.NewScanner(file)
-			scanner.Scan()
-
-			firstLine := scanner.Text()
-
-			return strings.Split(firstLine, " ")[1]
-		}
-		colorize.PrintWithColor("Error reading go.mod file", colorize.Red)
-		os.Exit(1)
-		return ""
-	*/
 }
