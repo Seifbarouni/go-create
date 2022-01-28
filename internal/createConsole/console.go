@@ -24,6 +24,17 @@ func CreateConsoleApp(folderName string) {
 		h.CreateFolder(folderName)
 	}
 
+	// get the moddule name from the user
+	moduleName := ""
+	// get module name from user
+	colorize.PrintWithColor("module name : ", colorize.Gray)
+	fmt.Scanln(&moduleName)
+	// if the module name is empty recall the function
+	if moduleName == "" {
+		CreateConsoleApp(folderName)
+	}
+	h.ExecuteCommand("go", "mod", "init", moduleName)
+
 	h.AddFolderAndReadme("bin", "# `/bin`\n This folder contains the binary files of the app")
 	h.AddFolderAndReadme("cmd", "# `/cmd`\n This folder contains the main.go file of the app")
 	h.AddFolderAndReadme("internal", "# `/internal`\n Private application and library code. This is the code you don't want others importing in their applications or libraries.")
