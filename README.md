@@ -1,5 +1,8 @@
 # go-create
 
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://choosealicense.com/licenses/mit/)
+![Build](https://img.shields.io/badge/build-passed-green)
+<br>
 go-create is a tool that helps me create my apps (console apps, back-end web apps, full-stack web apps).
 
 ## Build
@@ -42,7 +45,3 @@ go-create service Article
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
