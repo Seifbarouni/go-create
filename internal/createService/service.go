@@ -47,8 +47,7 @@ func CreateService(model string) {
 	arr := strings.Split(wd, h.GetSeperator())
 	folderName := arr[len(arr)-1]
 	module := h.GetModuleName()
-	// go to the services folder
-	err = os.Chdir("services")
+	err = os.Chdir(wd)
 	if err != nil {
 		panic(err)
 	}

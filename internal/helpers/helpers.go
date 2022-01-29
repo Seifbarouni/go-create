@@ -142,8 +142,8 @@ func (*Helpers) GetModuleName() string {
 	// read the first line of the go.mod file
 	file, err := os.Open("go.mod")
 	if err != nil {
-		colorize.PrintWithColor("Error opening go.mod file", colorize.Red)
-		os.Exit(1)
+		colorize.PrintWithColor("Cannot find go.mod file, generating default name...\n", colorize.Bold)
+		return "your/module/name"
 	}
 	defer file.Close()
 	scanner := bufio.NewScanner(file)
