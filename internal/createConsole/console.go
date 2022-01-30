@@ -27,12 +27,14 @@ func CreateConsoleApp(folderName string) {
 
 	// get the moddule name from the user
 	moduleName := ""
-	// get module name from user
-	colorize.PrintWithColor("module name : ", colorize.Gray)
-	fmt.Scanln(&moduleName)
-	// if the module name is empty recall the function
-	if moduleName == "" {
-		CreateConsoleApp(folderName)
+	for {
+		// get module name from user
+		colorize.PrintWithColor("module name : ", colorize.Gray)
+		fmt.Scanln(&moduleName)
+		// if the module name is empty recall the function
+		if moduleName != "" {
+			break
+		}
 	}
 	h.ExecuteCommand("go", "mod", "init", moduleName)
 

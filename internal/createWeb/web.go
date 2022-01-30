@@ -21,24 +21,26 @@ func initializeModuleWithFiber(moduleName string) {
 
 func createBackendWebApp(folderName string) {
 	moduleName := ""
-	// get module name from user
-	colorize.PrintWithColor("module name : ", colorize.Gray)
-	fmt.Scanln(&moduleName)
-	// if the module name is empty recall the function
-	if moduleName == "" {
-		createBackendWebApp(folderName)
+	for {
+		// get module name from user
+		colorize.PrintWithColor("module name : ", colorize.Gray)
+		fmt.Scanln(&moduleName)
+		// if the module name is empty recall the function
+		if moduleName != "" {
+			break
+		}
 	}
 	initializeModuleWithFiber(moduleName)
 	// initialize go-fiber in the main.go file
 	h.CreateFile("main.go", gen.GenerateMainWeb(moduleName))
 
-	h.CreateFile(".env",gen.Env )
+	h.CreateFile(".env", gen.Env)
 	h.CreateFile("Dockefile", gen.Dockerfile)
 	h.CreateFile(".dockerignore", gen.Dockerignore)
 	h.CreateFile(".gitignore", gen.Gitignore)
 
 	h.AddFolderAndReadme("models", gen.ModelREADME)
-	h.AddFolderAndReadme("controllers",gen.ControllerREADME)
+	h.AddFolderAndReadme("controllers", gen.ControllerREADME)
 	h.AddFolderAndReadme("services", gen.ServiceREADME)
 	h.AddFolderAndReadme("routes", gen.RouteREADME)
 	h.AddFolderAndReadme("database", gen.DatabaseREADME)
