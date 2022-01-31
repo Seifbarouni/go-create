@@ -11,17 +11,6 @@ import (
 
 var h *helpers.Helpers = helpers.InitializeHelpers()
 
-// check if these packages are installed :
-// - gorm.io/gorm
-// - gorm.io/driver/postgres
-func installNeededPackages() {
-	colorize.PrintWithColor("Installing needed packages...\n", colorize.Cyan)
-	// go get -u gorm.io/gorm
-	h.ExecuteCommand("go", "get", "-u", gen.GormPackage)
-	// go get -u gorm.io/driver/postgres
-	h.ExecuteCommand("go", "get", "-u", gen.GormPostgresDriver)
-}
-
 func CreateDB(fileName string) {
 	// check if the user has provided a valid file name
 	if fileName == "" {
@@ -39,7 +28,6 @@ func CreateDB(fileName string) {
 		os.Exit(1)
 	}
 
-	installNeededPackages()
 
 	wd, err := os.Getwd()
 	if err != nil {
@@ -50,6 +38,9 @@ func CreateDB(fileName string) {
 	folderName := arr[len(arr)-1]
 
 	h.CreateFile(fileName, gen.GenerateDB(folderName))
+
+	h.ExecuteCommand("go", "mod","tidy")
+
 
 	colorize.PrintWithColor("\n"+fileName+" file created\n", colorize.Green)
 }

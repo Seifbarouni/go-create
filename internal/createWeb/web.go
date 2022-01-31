@@ -12,13 +12,6 @@ import (
 
 var h *helpers.Helpers = helpers.InitializeHelpers()
 
-func initializeModuleWithFiber(moduleName string) {
-	// go mod init with the module name
-	h.ExecuteCommand("go", "mod", "init", moduleName)
-	// go get -u github.com/gofiber/fiber/v2
-	h.ExecuteCommand("go", "get", "-u", gen.FiberPackage)
-}
-
 func createBackendWebApp(folderName string) {
 	moduleName := ""
 	for {
@@ -30,9 +23,10 @@ func createBackendWebApp(folderName string) {
 			break
 		}
 	}
-	initializeModuleWithFiber(moduleName)
+	h.ExecuteCommand("go", "mod", "init", moduleName)
 	// initialize go-fiber in the main.go file
 	h.CreateFile("main.go", gen.GenerateMainWeb(moduleName))
+	h.ExecuteCommand("go", "mod", "tidy")
 
 	h.CreateFile(".env", gen.Env)
 	h.CreateFile("Dockefile", gen.Dockerfile)
