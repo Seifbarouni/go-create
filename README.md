@@ -8,17 +8,9 @@ go-create is a tool that helps me create my apps (console apps, back-end web app
 ## Build
 
 You need to have Golang v1.17.5+ to be able to build this project.<br>
-For Linux users :
 
 ```bash
-./build_linux.sh
-```
-
-For Windows users : <br>
-After executing this script, you need to add the executable located in your bin folder to your path to use it everywhere. For more info, please check out this [link](https://medium.com/@kevinmarkvi/how-to-add-executables-to-your-path-in-windows-5ffa4ce61a53).
-
-```bash
-./build_windows.sh
+./build.sh
 ```
 
 ## Usage
