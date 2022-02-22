@@ -29,7 +29,7 @@ func createBackendWebApp(folderName string) {
 	h.ExecuteCommand("go", "mod", "tidy")
 
 	h.CreateFile(".env", gen.Env)
-	h.CreateFile("Dockefile", gen.Dockerfile)
+	h.CreateFile("Dockerfile", gen.Dockerfile)
 	h.CreateFile(".dockerignore", gen.Dockerignore)
 	h.CreateFile(".gitignore", gen.Gitignore)
 
