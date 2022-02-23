@@ -30,6 +30,7 @@ func createBackendWebApp(folderName string) {
 
 	h.CreateFile(".env", gen.Env)
 	h.CreateFile("Dockerfile", gen.Dockerfile)
+	h.CreateFile("docker-compose.yaml", gen.DockerCompose)
 	h.CreateFile(".dockerignore", gen.Dockerignore)
 	h.CreateFile(".gitignore", gen.Gitignore)
 
