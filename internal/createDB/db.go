@@ -28,7 +28,6 @@ func CreateDB(fileName string) {
 		os.Exit(1)
 	}
 
-
 	wd, err := os.Getwd()
 	if err != nil {
 		panic(err)
@@ -39,8 +38,7 @@ func CreateDB(fileName string) {
 
 	h.CreateFile(fileName, gen.GenerateDB(folderName))
 
-	h.ExecuteCommand("go", "mod","tidy")
-
+	h.ExecuteCommand("go", "mod", "tidy")
 
 	colorize.PrintWithColor("\n"+fileName+" file created\n", colorize.Green)
 }

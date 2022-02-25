@@ -123,7 +123,7 @@ func (h *Helpers) AddPublicAndPrivateRoutes() {
 	// create publicRoutes.go file
 	h.CreateFile("publicRoutes.go", gen.PublicRoute)
 	// create privateRoutes.go file
-	h.CreateFile("privateRoutes.go", gen.PrivateRoute )
+	h.CreateFile("privateRoutes.go", gen.PrivateRoute)
 	// go to the parent folder
 	err = os.Chdir("..")
 	if err != nil {
