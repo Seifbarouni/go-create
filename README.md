@@ -2,6 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://choosealicense.com/licenses/mit/)
 ![Build](https://img.shields.io/badge/build-passed-green)
+[![Go Report Card](https://goreportcard.com/badge/github.com/Seifbarouni/go-create)](https://goreportcard.com/report/github.com/Seifbarouni/go-create)
 <br>
 go-create is a tool that helps me create my apps (console apps, back-end web apps, full-stack web apps).
 
