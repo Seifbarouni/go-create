@@ -1,4 +1,4 @@
-package createService
+package createservice
 
 import (
 	"os"
@@ -11,6 +11,7 @@ import (
 
 var h *helpers.Helpers = helpers.InitializeHelpers()
 
+// CreateService creates a service file
 func CreateService(model string) {
 	// delete every special character from the file name
 	model = strings.ReplaceAll(model, "-", "")

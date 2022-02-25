@@ -1,8 +1,9 @@
-package colorizeText
+package colorizetext
 
 import "fmt"
 
 var (
+	// Colors
 	Reset  = "\033[0m"
 	Bold   = "\033[1m"
 	Red    = "\033[31m"
@@ -15,6 +16,7 @@ var (
 	White  = "\033[97m"
 )
 
+// Prints text with a specified color
 func PrintWithColor(text string, color string) {
 	fmt.Print(color + text + Reset)
 }

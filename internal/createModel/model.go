@@ -1,4 +1,4 @@
-package createModel
+package createmodel
 
 import (
 	"bufio"
@@ -59,6 +59,7 @@ func getModelAttributes() string {
 	return structStr
 }
 
+// CreateModel creates a new model
 func CreateModel(fileName string) {
 	// check if the user has provided a valid file name
 	if fileName == "" {

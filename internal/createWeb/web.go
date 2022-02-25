@@ -1,4 +1,4 @@
-package createWeb
+package createweb
 
 import (
 	"fmt"
@@ -79,6 +79,7 @@ func createFullstackWebApp() {
 	createFrontendApp()
 }
 
+// CreateWebApp creates a new web application
 func CreateWebApp(folderName string, appType string) {
 	if appType == "1" || appType == "fullstack" {
 		start := time.Now()

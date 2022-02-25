@@ -1,4 +1,4 @@
-package createDB
+package createdb
 
 import (
 	"os"
@@ -11,6 +11,7 @@ import (
 
 var h *helpers.Helpers = helpers.InitializeHelpers()
 
+// CreateDB creates a database file
 func CreateDB(fileName string) {
 	// check if the user has provided a valid file name
 	if fileName == "" {

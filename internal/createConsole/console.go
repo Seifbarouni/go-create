@@ -1,4 +1,4 @@
-package createConsole
+package createconsole
 
 import (
 	"fmt"
@@ -12,6 +12,7 @@ import (
 
 var h *helpers.Helpers = helpers.InitializeHelpers()
 
+// CreateConsole creates a console application
 func CreateConsoleApp(folderName string) {
 	// start timer
 	start := time.Now()

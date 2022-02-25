@@ -12,12 +12,15 @@ import (
 	gen "github.com/Seifbarouni/go-create/internal/generators"
 )
 
+// Helpers struct
 type Helpers struct{}
 
+// InitializeHelpers initializes the helpers
 func InitializeHelpers() *Helpers {
 	return &Helpers{}
 }
 
+// CreateFolder creates a folder
 func (*Helpers) CreateFolder(folderName string) {
 	// check if the folder exists
 	if _, err := os.Stat(folderName); err == nil {
@@ -38,6 +41,7 @@ func (*Helpers) CreateFolder(folderName string) {
 	}
 }
 
+// CreateFile creates a file
 func (*Helpers) CreateFile(fileName string, content string) {
 	// create the file
 	file, err := os.Create(fileName)
@@ -57,6 +61,7 @@ func (*Helpers) CreateFile(fileName string, content string) {
 	}
 }
 
+// ExecuteCommand executes a command
 func (*Helpers) ExecuteCommand(command ...string) {
 	cmd := exec.Command(command[0], command[1:]...)
 
@@ -72,7 +77,7 @@ func (*Helpers) ExecuteCommand(command ...string) {
 
 }
 
-// create folder and add README.md file
+// AddFolderAndReadme creates folder and adds a README.md file
 func (h *Helpers) AddFolderAndReadme(folderName string, content string) {
 	colorize.PrintWithColor(fmt.Sprintf("Creating %s folder...\n", folderName), colorize.Purple)
 	// create the folder
@@ -90,6 +95,7 @@ func (h *Helpers) AddFolderAndReadme(folderName string, content string) {
 	colorize.PrintWithColor(fmt.Sprintf("Folder %s created\n", folderName), colorize.White)
 }
 
+// GetSeperator returns the seperator for the current OS
 func (*Helpers) GetSeperator() string {
 	os := runtime.GOOS
 	if os == "windows" {
@@ -98,6 +104,7 @@ func (*Helpers) GetSeperator() string {
 	return "/"
 }
 
+// ValidateFolderName validates the folder name
 func (*Helpers) ValidateFolderName(folderName string) bool {
 	// check if the folder name is valid and does not contain spaces and special characters
 	if len(folderName) < 1 || len(folderName) > 50 {
@@ -113,6 +120,7 @@ func (*Helpers) ValidateFolderName(folderName string) bool {
 	return true
 }
 
+// AddPublicAndPrivateRoutes adds public and private routes
 func (h *Helpers) AddPublicAndPrivateRoutes() {
 	// go to the routes folder
 	err := os.Chdir("routes")
@@ -132,6 +140,7 @@ func (h *Helpers) AddPublicAndPrivateRoutes() {
 	}
 }
 
+// GetModuleName returns the module name
 func (*Helpers) GetModuleName() string {
 	// go to the root folder
 	err := os.Chdir("..")

@@ -12,6 +12,7 @@ var rootCmd = &cobra.Command{
 	Long:  `A simple CLI tool that helps me create my apps (console apps, back-end web apps, full-stack web apps).`,
 }
 
+// Execute executes the root command
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
 		os.Exit(1)
